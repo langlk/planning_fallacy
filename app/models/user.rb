@@ -6,11 +6,9 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   def self.find_for_google_oauth2(auth)
-    binding.pry
     data = auth.info
     user = User.where(provider: auth.provider, uid: auth.uid).take
     user ||= User.new(provider: auth.provider, uid: auth.uid)
-    binding.pry
     user.provider = auth.provider
     user.uid = auth.uid
     user.email = auth.info.email
