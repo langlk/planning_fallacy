@@ -21,6 +21,13 @@ To install on your own machine, follow the instructions below:
   ```
 * Open ```localhost:3000``` in your web browser
 
+## TODO
+
+* Clean up gcal code
+* Set up log in with devise/bcrypt
+* Make sure authentication works for repeated calls.
+* Update redirect URLS and so on
+
 ## Planning
 
 * Link Gcal

@@ -44,6 +44,5 @@ class SiteController < ApplicationController
                                    time_min: (Time.now - 12.hour).iso8601,
                                    time_max: (Time.now + 12.hour).iso8601,
                                    options: { authorization: auth_client })
-    binding.pry
   end
 end
