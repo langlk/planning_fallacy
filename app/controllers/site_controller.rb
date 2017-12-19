@@ -29,7 +29,7 @@ class SiteController < ApplicationController
     session[:access_token] = auth_client.access_token
     session[:id_token] = auth_client.id_token
     session[:expires_in] = auth_client.expires_in
-    session[:expiry] = auth_client.expiry
+    session[:refresh_token] ||= auth_client.refresh_token
     redirect_to '/calendar'
   end
 
@@ -39,7 +39,8 @@ class SiteController < ApplicationController
     auth_client.access_token = session[:access_token]
     auth_client.id_token = session[:id_token]
     auth_client.expires_in = session[:expires_in]
-    auth_client.expiry = session[:expiry]
+    auth_client.refresh_token = session[:refresh_token]
+    auth_client.refresh!
     service = Google::Apis::CalendarV3::CalendarService.new
     calendar_id = 'primary'
     # Currently shows 12 hours before and 12 hours after
