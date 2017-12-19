@@ -31,6 +31,30 @@ To install on your own machine, follow the instructions below:
 
 ## Planning
 
+* User flow:
+  * Sign up
+  * Link Gcal
+  * See upcoming events
+  * Checkin: list of events +/- 12 hours from now - select event, mark 'arrived', mark how many minutes ago
+    * Store event name, time, amount late
+  * Calculating: find avg lateness over all user events
+
+* Models
+  * Event:
+    * Datetime occurred
+    * Name
+    * Lateness
+    * User id
+
+* User
+  * Email
+  * Password
+  * Gcal: **If storing this in DB works, else keep it in session**
+    * access_token
+    * id_token
+    * refresh_token
+    * expires_in
+
 * Link Gcal
 * User can log in and see their upcoming events
 * User can log a time they arrived at a given event
