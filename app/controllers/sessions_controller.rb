@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = user.errors.full_messages
-      redirect_to '/sign_in'
+      render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
     flash[:notice] = "You've signed out!"
-    redirect_to '/sign_in'
+    redirect_to '/signin'
   end
 end

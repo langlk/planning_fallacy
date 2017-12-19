@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = user.errors.full_messages
-      redirect_to '/sign_up'
+      render :new
     end
   end
 
