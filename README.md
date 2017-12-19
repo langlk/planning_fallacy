@@ -44,9 +44,6 @@ _Please contact [kels.langlois@gmail.com](mailto:kels.langlois@gmail.com) with q
 
 * Ruby
 * Rails
-* Rack::Throttle
-
-_Token-Based Authentication from [this tutorial](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api)._
 
 ### License
 

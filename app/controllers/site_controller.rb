@@ -26,15 +26,20 @@ class SiteController < ApplicationController
     auth_client.code = params[:code]
     auth_client.redirect_uri = 'http://localhost:3000/users/auth/google_oauth2'
     auth_client.fetch_access_token!
-    auth_client.client_secret = nil
-    session[:credentials] = auth_client.to_json
+    session[:access_token] = auth_client.access_token
+    session[:id_token] = auth_client.id_token
+    session[:expires_in] = auth_client.expires_in
+    session[:expiry] = auth_client.expiry
     redirect_to '/calendar'
   end
 
   def calendar
-    client_opts = JSON.parse(session[:credentials])
-    client_opts['client_secret'] = ENV['GOOGLE_CLIENT_SECRET']
-    auth_client = Signet::OAuth2::Client.new(client_opts)
+    client_secrets = Google::APIClient::ClientSecrets.load
+    auth_client = client_secrets.to_authorization
+    auth_client.access_token = session[:access_token]
+    auth_client.id_token = session[:id_token]
+    auth_client.expires_in = session[:expires_in]
+    auth_client.expiry = session[:expiry]
     service = Google::Apis::CalendarV3::CalendarService.new
     calendar_id = 'primary'
     # Currently shows 12 hours before and 12 hours after
