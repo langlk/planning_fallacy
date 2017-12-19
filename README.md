@@ -27,6 +27,7 @@ To install on your own machine, follow the instructions below:
 * Set up log in with devise/bcrypt
 * Make sure authentication works for repeated calls.
 * Update redirect URLS and so on
+* Figure out Cookie size issue
 
 ## Planning
 
