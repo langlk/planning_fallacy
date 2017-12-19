@@ -3,19 +3,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
-  def self.find_for_google_oauth2(auth)
-    data = auth.info
-    user = User.where(provider: auth.provider, uid: auth.uid).take
-    user ||= User.new(provider: auth.provider, uid: auth.uid)
-    user.provider = auth.provider
-    user.uid = auth.uid
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.token = auth.credentials.token
-    user.refresh_token = auth.credentials.refresh_token
-    user.save
-    return user
-  end
+    :recoverable, :rememberable, :trackable, :validatable
 end
