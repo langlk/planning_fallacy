@@ -6,7 +6,18 @@
     <meta name="google-signin-client_id" content="85551620160-m9i5am2njoqv2nt34q7n6mrcjijftaer.apps.googleusercontent.com">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <script>
+      function start() {
+        gapi.load('auth2', function() {
+          auth2 = gapi.auth2.init({
+            client_id: '85551620160-m9i5am2njoqv2nt34q7n6mrcjijftaer.apps.googleusercontent.com',
+            scope: 'https://www.googleapis.com/auth/calendar.readonly'
+          });
+        });
+      }
+    </script>
   </head>
 
   <body>
@@ -24,7 +35,13 @@
     <% if current_user %>
 
     <% else %>
-      <p><div class="g-signin2" data-onsuccess="onSignIn"></div></p>
+      <p><button id="signinButton">Sign in with Google</button></div></p>
+      <script>
+        $('#signinButton').click(function() {
+          // signInCallback defined in step 6.
+          auth2.grantOfflineAccess().then(signInCallback);
+        });
+      </script>
       <script>
         function onSignIn(googleUser) {
           console.log('got profile');
@@ -52,5 +69,35 @@
     <p><%= flash[:alert] %></p>
     <p><%= flash[:notice] %></p>
     <%= yield %>
+
+    <script>
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+
+        // Hide the sign-in button now that the user is authorized, for example:
+        $('#signinButton').attr('style', 'display: none');
+
+        // Send the code to the server
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3000/storeauthcode?code=' + authResult['code'],
+          // Always include an `X-Requested-With` header in every AJAX request,
+          // to protect against CSRF attacks.
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          contentType: 'application/octet-stream; charset=utf-8',
+          success: function(result) {
+            debugger;
+          },
+          processData: false,
+          data: authResult['code']
+        });
+      } else {
+        debugger;
+      }
+    }
+    </script>
+
   </body>
 </html>

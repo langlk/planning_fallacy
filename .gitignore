@@ -19,4 +19,4 @@
 .byebug_history
 
 .env
-client_secret.json
+client_secrets.json
