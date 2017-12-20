@@ -1,0 +1,13 @@
+<h1>Your Profile</h1>
+
+<h3>User Name: <%= current_user.name %></h3>
+<h3>User Email: <%= current_user.email %></h3>
+
+<h2>Stats</h2>
+
+<% if current_account.late? %>
+  <h4>On average, you are <%= current_account.lateness / 60 %> minutes late for events.</h4>
+<% else %>
+  <h4>On average, you are <%= current_account.earliness / 60 %> minutes early for events.</h4>
+<% end %>
+<h4>You've checked in to <%= current_account.checkins.length %> events.</h4>

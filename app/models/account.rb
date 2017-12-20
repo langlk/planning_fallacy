@@ -12,4 +12,12 @@ class Account < ActiveRecord::Base
       return 0
     end
   end
+
+  def earliness
+    -self.lateness
+  end
+
+  def late?
+    self.lateness > 0
+  end
 end

@@ -23,7 +23,7 @@ To install on your own machine, follow the instructions below:
 
 ## TODO
 
-* Set up actual calculation/recommendation
+* X Set up actual calculation/recommendation
 * Styling
 * Authorization: try to prevent people from re-approving access and possibly LOSING REFRESH KEY FOREVER
 * TESTSTESTSTESTSTESTS
@@ -40,7 +40,7 @@ To install on your own machine, follow the instructions below:
   * X Checkin: list of events +/- 12 hours from now - select event, mark 'arrived',
     * **TODO:** mark how many minutes ago
     * Store event name, time, amount late
-  * Calculating: find avg lateness over all user events
+  * X Calculating: find avg lateness over all user events
 
 * Models
   * X Checkin:
