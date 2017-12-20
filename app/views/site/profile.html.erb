@@ -1,13 +1,38 @@
-<h1>Your Profile</h1>
 
-<h3>User Name: <%= current_user.name %></h3>
-<h3>User Email: <%= current_user.email %></h3>
 
-<h2>Stats</h2>
+<div class="ui stackable grid">
+  <div class="eight wide column">
+    <h2 class="ui dividing header">
+      <i class="user circle outline icon"></i>
+      <div class="content">
+        Profile
+      </div>
+    </h2>
 
-<% if current_account.late? %>
-  <h4>On average, you are <%= current_account.lateness / 60 %> minutes late for events.</h4>
-<% else %>
-  <h4>On average, you are <%= current_account.earliness / 60 %> minutes early for events.</h4>
-<% end %>
-<h4>You've checked in to <%= current_account.checkins.length %> events.</h4>
+    <h4>Name: <span class="unweight"><%= current_user.name %></span></h4>
+    <h4>Email: <span class="unweight"><%= current_user.email %></span></h4>
+    <h4>
+      User since:
+      <span class="unweight">
+        <%= current_user.created_at.strftime('%B %e, %Y') %>
+      </span>
+    </h4>
+  </div>
+
+  <div class="eight wide column">
+    <h2 class="ui dividing header">
+      <i class="line chart icon"></i>
+      <div class="content">
+        Stats
+      </div>
+    </h2>
+
+    <% if current_account.late? %>
+      <h4>On average, you are <span class="red"><%= current_account.lateness / 60 %> minutes late</span> for events.</h4>
+    <% else %>
+      <h4>On average, you are <span class="green"><%= current_account.earliness / 60 %> minutes early</span> for events.</h4>
+    <% end %>
+    <h4>You've checked in to <%= current_account.checkins.length %> events.</h4>
+
+  </div>
+</div>
