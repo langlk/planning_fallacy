@@ -1,11 +1,31 @@
-<h1>Upcoming Events</h1>
+<h1 class="ui dividing header">
+  <i class="calendar icon"></i>
+  <div class="content">
+    Upcoming Events
+  </div>
+</h1>
 
 <% if @events.any? %>
   <% @events.each do |event| %>
-    <div class="event">
-      <h3><%= event.summary %></h3>
-      <h5><%= event.start.date_time.strftime('%b %-d %Y %H:%M') %> to <%= event.end.date_time.strftime('%b %-d %Y %H:%M') %></h5>
-      <h5><%= event.location %></h5>
+    <div class="ui large feed">
+      <div class="event">
+        <div class="label">
+          <i class="calendar outline icon"></i>
+        </div>
+        <div class="content">
+          <div class="summary">
+            <%= event.summary %>
+            <div class="date">
+              <%= event.start.date_time.strftime('%H:%M on %A') %>
+            </div>
+          </div>
+          <div class="extra text">
+            <%= event.location %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
+<% else %>
+  <h3>No Upcoming Events Saved</h3>
 <% end %>
