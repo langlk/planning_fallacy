@@ -16,25 +16,33 @@
 
 @import "semantic-ui";
 
-.sign-in-up-grid {
-  min-height: 100vh;
-}
+// Updates to Semantic, used throughout site
 
-.form-column {
-  max-width: 450px;
+.message.notification {
+  text-align: left;
 }
 
 .ui.main.text.container {
   padding-top: 60px;
 }
 
-.message.notification {
-  text-align: left;
-}
-
 .ui.dividing.header {
   padding-bottom: .3em;
 }
+
+// Sign in & up pages
+
+.sign-in-up-grid {
+  min-height: 100vh;
+}
+
+// Forms
+
+.form-column {
+  max-width: 450px;
+}
+
+// Custom font-color classes
 
 .red {
   color: #db2828;
