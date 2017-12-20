@@ -5,6 +5,9 @@
         Sign Up
       </div>
     </h2>
+
+    <%= render 'layouts/errors' %>
+
     <%= form_for :user, url: '/users', html: {class: "ui large form"} do |f| %>
       <div class="ui stacked segment">
         <div class="field">

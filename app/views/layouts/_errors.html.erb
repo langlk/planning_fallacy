@@ -1,0 +1,17 @@
+<% if flash[:alert] %>
+  <div class="ui warning message">
+    <i class="close icon"></i>
+    <% if flash[:alert].class == Array %>
+      <div class="header">
+        Something went wrong!
+      </div>
+      <ul>
+        <% flash[:alert].each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= flash[:alert] %>
+    <% end %>
+  </div>
+<% end %>
