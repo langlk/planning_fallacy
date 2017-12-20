@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to '/'
     else
-      flash[:alert] = user.errors.full_messages
+      flash[:alert] = "Incorrect email or password."
       render :new
     end
   end

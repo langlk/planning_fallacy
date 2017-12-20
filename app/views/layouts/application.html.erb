@@ -30,31 +30,17 @@
           </div>
         </div>
       </div>
+      
       <div class="ui main text container">
         <% if flash[:notice] %>
-          <div class="ui info message">
+          <div class="ui info message notification">
             <i class="close icon"></i>
             <%= flash[:notice] %>
           </div>
         <% end %>
 
+        <%= render 'layouts/errors' %>
 
-        <% if flash[:alert] %>
-          <div class="ui warning message">
-            <i class="close icon"></i>
-            <% if flash[:alert].class == Array %>
-                <p><strong>Something went wrong!</strong></p>
-                <ul>
-                  <% flash[:alert].each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <p><%= flash[:alert] %></p>
-              <% end %>
-          </div>
-        <% end %>
-        <p><%= flash[:alert]  %></p>
         <%= yield %>
       </div>
     <% else %>
