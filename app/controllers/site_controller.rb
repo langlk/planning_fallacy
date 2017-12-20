@@ -6,6 +6,6 @@ class SiteController < ApplicationController
   end
 
   def calendar
-    @response = GetCalendarEvents.call(current_account).result
+    @events = GetCalendarEvents.call(current_account).result.items
   end
 end

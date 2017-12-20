@@ -1,7 +1,7 @@
 <h1>Upcoming Events</h1>
 
-<% if @response.items.any? %>
-  <% @response.items.each do |event| %>
+<% if @events.any? %>
+  <% @events.each do |event| %>
     <div class="event">
       <h3><%= event.summary %></h3>
       <h5><%= event.start.date_time.strftime('%b %-d %Y %H:%M') %> to <%= event.end.date_time.strftime('%b %-d %Y %H:%M') %></h5>

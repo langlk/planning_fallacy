@@ -1,5 +1,6 @@
 class CheckinsController < ApplicationController
   def new
+    @events = GetCalendarEvents.call(current_account).result.items
     @checkin = current_account.checkins.new
   end
 
