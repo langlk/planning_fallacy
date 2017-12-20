@@ -36,10 +36,11 @@ class SiteController < ApplicationController
   def calendar
     client_secrets = Google::APIClient::ClientSecrets.load
     auth_client = client_secrets.to_authorization
-    auth_client.access_token = session[:access_token]
-    auth_client.id_token = session[:id_token]
-    auth_client.expires_in = session[:expires_in]
-    auth_client.refresh_token = session[:refresh_token]
+    account = current_account
+    auth_client.access_token = account.access_token
+    auth_client.id_token = account.id_token
+    auth_client.expires_in = account.expires_in
+    auth_client.refresh_token = account.refresh_token
     auth_client.refresh!
     service = Google::Apis::CalendarV3::CalendarService.new
     calendar_id = 'primary'

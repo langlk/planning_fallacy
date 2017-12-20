@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.name}!"
-      redirect_to '/'
+      redirect_to '/add_account'
     else
       flash[:alert] = user.errors.full_messages
       render :new

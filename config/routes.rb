@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  get '/add_account' => 'accounts#new'
+  get '/authorize' => 'accounts#authorize'
+  get '/oauth_callback' => 'accounts#oauth_callback'
+
   get '/signin' => 'sessions#new'
   post '/sessions' => 'sessions#create'
-  delete '/signout' => 'sessions#destroy'
+  delete '/sessions' => 'sessions#destroy'
+
+  resources :accounts, only: [:new, :create]
 
   get '/calendar' => 'site#calendar'
   get '/calendar_auth' => 'site#calendar_auth'

@@ -9,6 +9,7 @@
 
   <body>
       <div class="container">
+        <%= link_to 'Sign out', '/sessions', method: :delete %>
         <p><%= flash[:notice] %></p>
         <p><%= flash[:alert]  %></p>
         <%= yield %>
