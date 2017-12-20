@@ -1,3 +1,33 @@
-<h1>Add Your Google Calendar</h1>
+<h1 class="ui dividing header">
+  <i class="calendar icon"></i>
+  <div class="content">
+    Add Your Google Calendar
+  </div>
+</h1>
 
-<h4><%= link_to "Authorize GCal", '/authorize' %></h4>
+<div class="ui ordered fluid top attached steps">
+  <div class="completed step">
+    <div class="content">
+      <div class="title">Sign Up</div>
+      <div class="description">Create your account</div>
+    </div>
+  </div>
+  <div class="active step">
+    <div class="content">
+      <div class="title">Link Calendar</div>
+      <div class="description">Connect your Google Calendar</div>
+    </div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <p>
+    This app uses your Google Calendar to track when your events are happening. For it to do this, you'll need to authorize readonly access. It won't create or edit events, but it will see details like event locations and attendees' display names and emails.
+  </p>
+  <p>
+    Click the button below to go to the Google authorization page, and follow the steps there to link your calendar.
+  </p>
+  <p>
+    <%= link_to "Authorize GCal", '/authorize', class: "ui fluid large blue submit button" %>
+  </p>
+</div>
