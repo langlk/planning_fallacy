@@ -5,25 +5,9 @@ class AccountsController < ApplicationController
   end
 
   def authorize
-    auth_command = CreateAuthClient.call
-    if auth_command.success?
-      auth_client = auth_command.result
-      # client_secrets = Google::APIClient::ClientSecrets.load
-      # auth_client = client_secrets.to_authorization
-      auth_client.update!(
-        :scope => 'https://www.googleapis.com/auth/calendar.readonly',
-        :redirect_uri => 'http://localhost:3000/oauth_callback',
-        :additional_parameters => {
-          "access_type" => "offline",         # offline access
-          "include_granted_scopes" => "true"  # incremental auth
-        }
-      )
-      auth_uri = auth_client.authorization_uri.to_s
-      redirect_to auth_uri
-    else
-      flash[:alert] = "Something went wrong with authorization!"
-      redirect_to '/add_account'
-    end
+    auth_client = UpdateAuthClient.call.result
+    auth_uri = auth_client.authorization_uri.to_s
+    redirect_to auth_uri
   end
 
   def oauth_callback
