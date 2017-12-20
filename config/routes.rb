@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   delete '/sessions' => 'sessions#destroy'
 
-  resources :checkins, only: [:new, :create]
+  get '/checkin' => 'checkins#new'
+  post '/checkin' => 'checkins#create'
 
   get '/calendar' => 'site#calendar'
-  get '/calendar_auth' => 'site#calendar_auth'
-  get '/users/auth/google_oauth2' => 'site#calendar_open'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

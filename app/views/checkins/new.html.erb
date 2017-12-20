@@ -1,0 +1,17 @@
+<h1>Check In to an Event</h1>
+
+<%= form_for @checkin, url: '/checkin' do |f| %>
+  <div class="input-field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-field">
+    <%= f.label :event_time %>
+    <%= f.date_field :event_time %>
+  </div>
+  <div class="input-field">
+    <%= f.label :lateness %>
+    <%= f.number_field :lateness %>
+  </div>
+  <%= f.submit "Check In", class: "waves-effect waves-light btn" %>
+<% end %>
