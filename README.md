@@ -40,9 +40,9 @@ To install on your own machine, follow the instructions below:
   * Calculating: find avg lateness over all user events
 
 * Models
-  * Checkin:
+  * X Checkin:
     * Datetime occurred
-    * Name
+    * Name of event
     * Lateness
     * User id
 

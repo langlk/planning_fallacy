@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220001713) do
+ActiveRecord::Schema.define(version: 20171220011100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20171220001713) do
     t.string "name"
     t.datetime "event_time"
     t.integer "lateness"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_checkins_on_user_id"
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_checkins_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|

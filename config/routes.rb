@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   delete '/sessions' => 'sessions#destroy'
 
-  resources :accounts, only: [:new, :create]
+  resources :checkins, only: [:new, :create]
 
   get '/calendar' => 'site#calendar'
   get '/calendar_auth' => 'site#calendar_auth'

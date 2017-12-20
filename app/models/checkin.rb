@@ -1,4 +1,4 @@
 class Checkin < ActiveRecord::Base
-  belongs_to :user
-  validates_presence_of :user, :event_time, :lateness, :name
+  belongs_to :account
+  validates_presence_of :account, :event_time, :lateness, :name
 end
