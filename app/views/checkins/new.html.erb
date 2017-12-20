@@ -2,16 +2,16 @@
 
 <%= form_for @checkin, url: '/checkin' do |f| %>
   <div class="input-field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="input-field">
-    <%= f.label :event_time %>
-    <%= f.date_field :event_time %>
-  </div>
-  <div class="input-field">
-    <%= f.label :lateness %>
-    <%= f.number_field :lateness %>
+    <%= f.label "Event" %>
+    <%= f.select(:event_id) do %>
+      <% @events.each do |event| %>
+        <%= content_tag(
+          :option,
+          "#{event.summary}: #{event.start.date_time.strftime('%a %H:%M')} - #{event.end.date_time.strftime('%H:%M')}",
+          value: event.id
+        ) %>
+      <% end %>
+    <% end %>
   </div>
   <%= f.submit "Check In", class: "waves-effect waves-light btn" %>
 <% end %>

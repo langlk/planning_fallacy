@@ -1,7 +1,7 @@
-class GetCalendarEvents
+class GetCalendarEvent
   prepend SimpleCommand
 
-  def initialize(event_id)
+  def initialize(account, event_id)
     @auth_client = AuthRefreshAccess.call(account).result
     @service = Google::Apis::CalendarV3::CalendarService.new
     @event_id = event_id

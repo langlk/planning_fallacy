@@ -5,7 +5,8 @@ class CheckinsController < ApplicationController
   end
 
   def create
-    @checkin = current_account.checkins.new(checkin_params)
+    event = GetCalendarEvent.call(current_account, params[:checkin][:event_id]).result
+    @checkin = current_account.checkins.new(event_id: event.id, event_time: event.start.date_time)
     if @checkin.save
       flash[:notice] = "You've checked in successfully!"
       redirect_to root_path
@@ -13,11 +14,5 @@ class CheckinsController < ApplicationController
       flash[:alert] = @checkin.errors.full_messages
       render :new
     end
-  end
-
-  private
-
-  def checkin_params
-    params.require(:checkin).permit(:name, :event_time, :lateness)
   end
 end
