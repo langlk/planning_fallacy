@@ -24,8 +24,8 @@ To install on your own machine, follow the instructions below:
 ## TODO
 
 * X Set up actual calculation/recommendation
-* Styling
-  * MOBILE RESPONSIVENESS
+* X Styling
+  * X MOBILE RESPONSIVENESS
 * Authorization: try to prevent people from re-approving access and possibly LOSING REFRESH KEY FOREVER
 * TESTSTESTSTESTSTESTS
 * Error handling because you know that API client is gonna throw a fit
