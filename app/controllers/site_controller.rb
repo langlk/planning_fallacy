@@ -5,6 +5,9 @@ class SiteController < ApplicationController
   def home
   end
 
+  def profile
+  end
+
   def calendar
     @events = GetCalendarEvents.call(current_account).result.items
   end

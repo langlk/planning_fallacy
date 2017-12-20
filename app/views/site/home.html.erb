@@ -1,5 +1,19 @@
-<h1>Welcome!</h1>
-
-<%= link_to "View Today's Events", calendar_path %>
-
-<%= link_to "Check in to an Event", checkin_path %>
+<div class="ui grid center aligned">
+  <div class="ui ten column">
+    <div class="ui vertical basic segment">
+      <h2><%= link_to "Check in to an Event", checkin_path %></h2>
+    </div>
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="ui vertical basic segment">
+      <h2><%= link_to "View Today's Events", calendar_path %></h2>
+    </div>
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="ui vertical basic segment">
+      <h2><%= link_to "View Your Profile", profile_path %></h2>
+    </div>
+  </div>
+</div>
