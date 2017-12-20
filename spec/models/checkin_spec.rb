@@ -9,7 +9,7 @@ describe Checkin do
   describe '#calculateness' do
     it "should set the checkin's lateness to the current time minus the event's time" do
       checkin = FactoryBot.create(:checkin, event_time: Time.now - 5.minute)
-      expect(checkin.lateness >= 5.minute).to eq(true)
+      expect(checkin.lateness).to be_within(0.01.minute).of(5.minute)
     end
   end
 end
