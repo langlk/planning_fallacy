@@ -23,11 +23,13 @@ To install on your own machine, follow the instructions below:
 
 ## TODO
 
-* Clean up gcal code
-* Set up log in with devise/bcrypt
-* Make sure authentication works for repeated calls.
-* Update redirect URLS and so on
-* Figure out Cookie size issue
+* Set up actual calculation/recommendation
+* Styling
+* Authorization: try to prevent people from re-approving access and possibly LOSING REFRESH KEY FOREVER
+* TESTSTESTSTESTSTESTS
+* Error handling because you know that API client is gonna throw a fit
+* User > Account > Checkin destroy properly
+* X Events returns empty and everything breaks
 
 ## Planning
 
@@ -35,7 +37,8 @@ To install on your own machine, follow the instructions below:
   * X Sign up
   * X Link Gcal
   * X See upcoming events
-  * Checkin: list of events +/- 12 hours from now - select event, mark 'arrived', mark how many minutes ago
+  * X Checkin: list of events +/- 12 hours from now - select event, mark 'arrived',
+    * **TODO:** mark how many minutes ago
     * Store event name, time, amount late
   * Calculating: find avg lateness over all user events
 
@@ -59,8 +62,8 @@ To install on your own machine, follow the instructions below:
 
 * X Link Gcal
 * X User can log in and see their upcoming events
-* User can log a time they arrived at a given event
-* User can receive a recommendation as to when to leave
+* X User can checkin when they arrive at a given event
+* **ToDo** User can receive a recommendation as to when to leave
 
 ## Support and contact details
 
