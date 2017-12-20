@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      session[:account_id] = user.account.id
+      session[:account_id] = user.account ? user.account.id : nil
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to '/'
     else
