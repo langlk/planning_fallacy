@@ -20,3 +20,5 @@
 
 .env
 client_secrets.json
+
+/coverage
