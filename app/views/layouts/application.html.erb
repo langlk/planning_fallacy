@@ -30,9 +30,13 @@
           </div>
         </div>
       </div>
-      <p><%= flash[:notice] %></p>
-      <p><%= flash[:alert]  %></p>
+      <div class="ui main text container">
+        <p><%= flash[:notice] %></p>
+        <p><%= flash[:alert]  %></p>
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
     <% end %>
-    <%= yield %>
   </body>
 </html>
