@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :current_account
+  before_action :authorize_user
+  before_action :authorize_account
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -9,5 +11,13 @@ class ApplicationController < ActionController::Base
 
   def current_account
     @current_account ||= Account.find(session[:account_id]) if session[:account_id]
+  end
+
+  def authorize_user
+    redirect_to '/signin' unless current_user
+  end
+
+  def authorize_account
+    redirect_to '/add_account' unless current_account
   end
 end
