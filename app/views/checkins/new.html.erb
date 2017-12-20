@@ -1,22 +1,31 @@
-<h1>Check In to an Event</h1>
+<h1 class="ui dividing header">
+  <i class="checkmark box icon"></i>
+  <div class="content">
+    Check In
+  </div>
+</h1>
 
-<% if @events.any? %>
-  <%= form_for @checkin, url: '/checkin' do |f| %>
-    <div class="input-field">
-      <%= f.label "Event" %>
-      <%= f.select(:event_id) do %>
-        <% @events.each do |event| %>
-          <%= content_tag(
-            :option,
-            "#{event.summary}: #{event.start.date_time.strftime('%a %H:%M')} - #{event.end.date_time.strftime('%H:%M')}",
-            value: event.id
-          ) %>
-        <% end %>
+<div class="ui grid centered">
+  <div class="column form-column">
+    <% if @events.any? %>
+      <%= form_for @checkin, url: '/checkin', html: { class: "ui form" } do |f| %>
+        <div class="field">
+          <%= f.label "Event" %>
+          <%= f.select(:event_id, nil, {}, class: 'ui dropdown') do %>
+            <% @events.each do |event| %>
+              <%= content_tag(
+                :option,
+                "#{event.summary}: #{event.start.date_time.strftime('%a %H:%M')} - #{event.end.date_time.strftime('%H:%M')}",
+                value: event.id
+              ) %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= f.submit "Check In", class: "ui fluid large blue submit button" %>
       <% end %>
-    </div>
-    <%= f.submit "Check In", class: "waves-effect waves-light btn" %>
-  <% end %>
-<% else %>
-  <h3>Looks like you don't have any upcoming events!</h3>
-  <p><%= link_to "Back to Home", root_path %></p>
-<% end %>
+    <% else %>
+      <h3>Looks like you don't have any upcoming events!</h3>
+      <p><%= link_to "Back to Home", root_path %></p>
+    <% end %>
+  </div>
+</div>
