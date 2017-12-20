@@ -9,25 +9,34 @@
 
   <body>
     <% if current_user %>
-      <div class="ui fixed stackable inverted menu">
+      <div class="ui fixed borderless inverted menu">
         <div class="ui container">
           <%= link_to "Planning Fallacy", root_path, class: "header item" %>
           <div class="right menu">
-            
+
             <% if current_account %>
-              <%= link_to '/checkin', class: "item" do %>
-                <i class="checkmark box icon"></i>
-                Check In
-              <% end  %>
+              <div class="show-large">
+                <%= link_to '/checkin', class: "item" do %>
+                  <i class="checkmark box icon"></i>
+                  Check In
+                <% end  %>
+              </div>
+            <% end %>
               <div class="ui simple dropdown item">
-                <i class="user icon"></i>
-                <%= current_user.name %>
-                <i class="dropdown icon"></i>
+                <span class='show-large'>
+                  <i class="user icon"></i>
+                  <%= current_user.name %>
+                  <i class="dropdown icon"></i>
+                </span>
+                <span class="show-small">
+                  <i class="sidebar icon"></i>
+                </span>
                 <div class="menu">
+                <% if current_account %>
+                  <%= link_to "Check In", '/checkin', class: "show-small item" %>
                   <%= link_to "Events", '/calendar', class: "item" %>
                   <%= link_to "Profile", '/profile', class: "item" %>
-            <% end %>
-
+                <% end %>
                 <%= link_to 'Sign out', '/sessions', method: :delete, class: "item" %>
               </div>
             </div>

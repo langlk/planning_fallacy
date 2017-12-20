@@ -55,3 +55,19 @@
 .unweight {
   font-weight: normal;
 }
+
+// Custom responsive show/hide
+
+.show-small {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .show-small {
+    display: inherit !important;
+  }
+
+  .show-large {
+    display: none;
+  }
+}
