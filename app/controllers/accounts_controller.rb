@@ -11,11 +11,7 @@ class AccountsController < ApplicationController
   end
 
   def oauth_callback
-    client_secrets = Google::APIClient::ClientSecrets.load
-    auth_client = client_secrets.to_authorization
-    auth_client.code = params[:code]
-    auth_client.redirect_uri = 'http://localhost:3000/oauth_callback'
-    auth_client.fetch_access_token!
+    auth_client = AuthFetchAccessToken.call(params[:code]).result
     @account = Account.new(
       access_token: auth_client.access_token,
       id_token: auth_client.id_token,
