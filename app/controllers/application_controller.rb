@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
   def authorize_account
     redirect_to '/add_account' unless current_account
   end
+
+  def authorize_no_user
+    redirect_to root_path unless !current_user
+  end
+
+  def authorize_no_account
+    redirect_to root_path unless !current_account
+  end
 end

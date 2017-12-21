@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authorize_user
   skip_before_action :authorize_account
-  
+  before_action :authorize_no_user
+
   def new
     @user = User.new
   end

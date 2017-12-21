@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   skip_before_action :authorize_account
+  before_action :authorize_no_account
 
   def new
   end
