@@ -16,7 +16,11 @@
           <div class="summary">
             <%= event.summary %>
             <div class="date">
-              <%= event.start.date_time.strftime('%H:%M on %A') %>
+              <% if event.start.date_time %>
+                <%= event.start.date_time.strftime('%H:%M on %A') %>
+              <% else %>
+                <%= event.start.date.to_datetime.strftime('All day %A')  %>
+              <% end %>
             </div>
           </div>
           <div class="extra text">

@@ -17,6 +17,7 @@ class SiteController < ApplicationController
     end
     if events_command.success?
       @events = events_command.result.items
+      binding.pry
     else
       @events = []
       flash[:alert] = "There was a problem fetching your events."
