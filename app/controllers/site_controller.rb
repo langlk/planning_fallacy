@@ -9,7 +9,12 @@ class SiteController < ApplicationController
   end
 
   def calendar
-    events_command = GetCalendarEvents.call(current_account, 0, 24)
+    # If integration testing, use set time so vcr handls request.
+    if Rails.env.test?
+      events_command = GetCalendarEvents.call(current_account, "2017-12-21T11:42:50-08:00", "2017-12-22T11:42:50-08:00")
+    else
+      events_command = GetCalendarEvents.call(current_account, 0, 24)
+    end
     if events_command.success?
       @events = events_command.result.items
     else
