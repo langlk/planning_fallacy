@@ -23,10 +23,10 @@ To install on your own machine, follow the instructions below:
 
 ## TODO
 
-* Authorization: try to prevent people from re-approving access and possibly LOSING REFRESH KEY FOREVER
 * TESTSTESTSTESTSTESTS
 * User > Account > Checkin destroy properly
 * All-Day events BREAK EVERYTHING
+* May need a way for users to reapprove access
 
 ## Planning
 
