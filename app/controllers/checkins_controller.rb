@@ -20,7 +20,8 @@ class CheckinsController < ApplicationController
     event_command = GetCalendarEvent.call(current_account, params[:checkin][:event_id])
     if event_command.success?
       event = event_command.result
-      @checkin = current_account.checkins.new(event_id: event.id, event_time: event.start.date_time)
+      start_time = event.start.date_time ? event.start.date_time : event.start.date.to_datetime
+      @checkin = current_account.checkins.new(event_id: event.id, event_time: start_time)
       if @checkin.save
         flash[:notice] = "You've checked in successfully!"
         redirect_to root_path

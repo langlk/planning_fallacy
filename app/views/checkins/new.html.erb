@@ -13,11 +13,19 @@
           <%= f.label "Event" %>
           <%= f.select(:event_id, nil, {}, class: 'ui dropdown') do %>
             <% @events.each do |event| %>
-              <%= content_tag(
-                :option,
-                "#{event.summary}: #{event.start.date_time.strftime('%a %H:%M')} - #{event.end.date_time.strftime('%H:%M')}",
-                value: event.id
-              ) %>
+              <% if event.start.date_time %>
+                <%= content_tag(
+                  :option,
+                  "#{event.summary}: #{event.start.date_time.strftime('%a %H:%M')} - #{event.end.date_time.strftime('%H:%M')}",
+                  value: event.id
+                ) %>
+              <% else %>
+                <%= content_tag(
+                  :option,
+                  "#{event.summary}: All day #{event.start.date.to_datetime.strftime('%A')}",
+                  value: event.id
+                ) %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
