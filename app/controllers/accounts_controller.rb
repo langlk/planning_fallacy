@@ -26,11 +26,11 @@ class AccountsController < ApplicationController
         flash[:notice] = 'Google calendar added successfully!'
         redirect_to '/calendar'
       else
-        flash[:alert] = ["Account could not be linked."]
+        flash[:alert] = "Account could not be linked."
         redirect_to '/add_account'
       end
     else
-      flash[:alert] = ["Google authorization failed."]
+      flash[:alert] = "Google authorization failed."
       redirect_to '/add_account'
     end
   end
