@@ -12,7 +12,6 @@ class AccountsController < ApplicationController
   end
 
   def oauth_callback
-    binding.pry
     auth_command = AuthFetchAccessToken.call(params[:code])
     if auth_command.success?
       auth_client = auth_command.result
