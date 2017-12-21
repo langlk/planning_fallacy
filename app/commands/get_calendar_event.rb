@@ -19,5 +19,6 @@ class GetCalendarEvent
     return nil
   rescue Google::Apis::AuthorizationError => exception
     errors.add(:client_error, 'unauthorized')
+    return nil
   end
 end

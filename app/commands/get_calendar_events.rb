@@ -16,5 +16,15 @@ class GetCalendarEvents
       options: { authorization: @auth_client }
     )
     return response
+  rescue Google::Apis::ClientError => exception
+    if exception.status_code == 404
+      errors.add(:event, "not found")
+    else
+      errors.add(:client_error, exception.message)
+    end
+    return nil
+  rescue Google::Apis::AuthorizationError => exception
+    errors.add(:client_error, 'unauthorized')
+    return nil
   end
 end

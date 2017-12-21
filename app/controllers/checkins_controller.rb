@@ -1,7 +1,14 @@
 class CheckinsController < ApplicationController
   def new
-    @events = GetCalendarEvents.call(current_account).result.items
-    @checkin = current_account.checkins.new
+    events_command = GetCalendarEvents.call(current_account)
+    if events_command.success?
+      @events = events_command.result.items
+      @checkin = current_account.checkins.new
+    else
+      @events = []
+      @checkin = current_account.checkins.new
+      flash[:alert] = "There was a problem fetching your events."
+    end
   end
 
   def create
