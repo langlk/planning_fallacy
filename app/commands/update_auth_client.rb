@@ -11,7 +11,7 @@ class UpdateAuthClient
       :redirect_uri => 'http://localhost:3000/oauth_callback',
       :additional_parameters => {
         "access_type" => "offline",         # offline access
-        "include_granted_scopes" => "true"  # incremental auth
+        "approval_prompt" => "force"
       }
     )
     return @auth_client
