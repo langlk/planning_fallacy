@@ -63,3 +63,14 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.filter_sensitive_data('<client_id>') { ENV['GOOGLE_CLIENT_ID'] }
+  c.filter_sensitive_data('<client_secret>') { ENV['GOOGLE_CLIENT_SECRET'] }
+  c.filter_sensitive_data('<auth_code>') { ENV['GOOGLE_TEST_CODE'] }
+  c.filter_sensitive_data('<access_token>') { ENV['GOOGLE_TEST_ACCESS'] }
+  c.filter_sensitive_data('<refresh_token>') { ENV['GOOGLE_TEST_REFRESH'] }
+end
