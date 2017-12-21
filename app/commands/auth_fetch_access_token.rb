@@ -8,7 +8,12 @@ class AuthFetchAccessToken
   end
 
   def call
-    @auth_client.fetch_access_token!
-    return @auth_client
+    if @code
+      @auth_client.fetch_access_token!
+      return @auth_client
+    else
+      errors.add(:authentication, "not confirmed by user")
+      nil
+    end
   end
 end
