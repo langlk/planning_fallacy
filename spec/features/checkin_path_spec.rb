@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "checking in to an event", vcr: true do
   let!(:account) { FactoryBot.create(:account,
-    refresh_token: "1/k4jBqFsGg_XSLk2HqkwzaN-oCK03C0L_RhM3SQoMrXg",
+    refresh_token: "correct_refresh_token",
     access_token: 'correct_access_token',
     expires_in: 3600,
     id_token: nil
