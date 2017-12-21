@@ -9,7 +9,7 @@ class SiteController < ApplicationController
   end
 
   def calendar
-    events_command = GetCalendarEvents.call(current_account)
+    events_command = GetCalendarEvents.call(current_account, 0, 24)
     if events_command.success?
       @events = events_command.result.items
     else

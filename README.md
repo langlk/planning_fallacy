@@ -24,6 +24,8 @@ To install on your own machine, follow the instructions below:
 ## TODO
 
 * TESTSTESTSTESTSTESTS
+  * Test get_calendar_events
+  * Test controllers
 * User > Account > Checkin destroy properly
 * All-Day events BREAK EVERYTHING
 * May need a way for users to reapprove access
