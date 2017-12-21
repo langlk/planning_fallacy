@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem 'dotenv-rails'
   gem 'simplecov'
+  gem 'vcr'
 end
 
 group :development do
