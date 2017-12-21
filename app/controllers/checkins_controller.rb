@@ -5,7 +5,6 @@ class CheckinsController < ApplicationController
   end
 
   def create
-    binding.pry
     event_command = GetCalendarEvent.call(current_account, params[:checkin][:event_id])
     if event_command.success?
       event = event_command.result

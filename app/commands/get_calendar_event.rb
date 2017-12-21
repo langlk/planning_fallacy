@@ -17,5 +17,7 @@ class GetCalendarEvent
       errors.add(:client_error, exception.message)
     end
     return nil
+  rescue Google::Apis::AuthorizationError => exception
+    errors.add(:client_error, 'unauthorized')
   end
 end
