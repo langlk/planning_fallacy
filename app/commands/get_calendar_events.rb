@@ -2,8 +2,10 @@ class GetCalendarEvents
   prepend SimpleCommand
 
   def initialize(account, min_time, max_time)
-    @min_time = min_time
-    @max_time = max_time
+    @min_time = min_time.class == String ?
+      Time.parse(min_time).iso8601 : (Time.now + min_time.hour).iso8601
+    @max_time = max_time.class == String ?
+      Time.parse(max_time).iso8601 : (Time.now + max_time.hour).iso8601
     @account = account
     @service = Google::Apis::CalendarV3::CalendarService.new
   end
@@ -16,8 +18,8 @@ class GetCalendarEvents
         'primary',
         single_events: true,
         order_by: 'startTime',
-        time_min: (Time.now + (@min_time).hour).iso8601,
-        time_max: (Time.now + (@max_time).hour).iso8601,
+        time_min: @min_time,
+        time_max: @max_time,
         options: { authorization: @auth_client }
       )
       return response

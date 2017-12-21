@@ -1,0 +1,226 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=correct_refresh_token&client_id=<client_id>&client_secret=<client_secret>
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 21 Dec 2017 18:48:40 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "new_access_token",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version:
+  recorded_at: Thu, 21 Dec 2017 18:48:40 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/calendars/primary/events?orderBy=startTime&singleEvents=true&timeMax=2017-12-22T10:35:59-08:00&timeMin=2017-12-21T10:35:59-08:00
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.18.0 Mac OS X/10.12.6
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 21 Dec 2017 18:48:40 GMT
+      Authorization:
+      - Bearer new_access_token
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 21 Dec 2017 18:48:40 GMT
+      Date:
+      - Thu, 21 Dec 2017 18:48:40 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "calendar#events",
+         "etag": "\"p32od3ndjrmdtg0g\"",
+         "summary": "kels.langlois@gmail.com",
+         "updated": "2017-12-21T18:26:25.742Z",
+         "timeZone": "America/Los_Angeles",
+         "accessRole": "owner",
+         "defaultReminders": [
+          {
+           "method": "popup",
+           "minutes": 30
+          }
+         ],
+         "items": [
+          {
+           "kind": "calendar#event",
+           "etag": "\"3027745532852000\"",
+           "id": "22tm2elh1blgmn2tiinmh6nl2r",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MjJ0bTJlbGgxYmxnbW4ydGlpbm1oNm5sMnIga2Vscy5sYW5nbG9pc0Bt",
+           "created": "2017-12-21T16:12:46.000Z",
+           "updated": "2017-12-21T16:12:46.426Z",
+           "summary": "Trade Show",
+           "location": "Epicodus, 1201 3rd Ave #1600, Seattle, WA 98101, USA",
+           "creator": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "organizer": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "start": {
+            "dateTime": "2017-12-21T15:00:00-08:00"
+           },
+           "end": {
+            "dateTime": "2017-12-21T16:00:00-08:00"
+           },
+           "iCalUID": "22tm2elh1blgmn2tiinmh6nl2r@google.com",
+           "sequence": 0,
+           "reminders": {
+            "useDefault": true
+           }
+          },
+          {
+           "kind": "calendar#event",
+           "etag": "\"3027745588260000\"",
+           "id": "7rv3c04d721n2g271suh72gaoj",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=N3J2M2MwNGQ3MjFuMmcyNzFzdWg3Mmdhb2oga2Vscy5sYW5nbG9pc0Bt",
+           "created": "2017-12-21T16:13:14.000Z",
+           "updated": "2017-12-21T16:13:14.130Z",
+           "summary": "Test Event",
+           "creator": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "organizer": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "start": {
+            "dateTime": "2017-12-21T17:00:00-08:00"
+           },
+           "end": {
+            "dateTime": "2017-12-21T18:00:00-08:00"
+           },
+           "iCalUID": "7rv3c04d721n2g271suh72gaoj@google.com",
+           "sequence": 0,
+           "reminders": {
+            "useDefault": true
+           }
+          },
+          {
+           "kind": "calendar#event",
+           "etag": "\"3027761278680000\"",
+           "id": "1ijq3eo3qgge7ivc3i8lsdduih",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MWlqcTNlbzNxZ2dlN2l2YzNpOGxzZGR1aWgga2Vscy5sYW5nbG9pc0Bt",
+           "created": "2017-12-21T18:23:29.000Z",
+           "updated": "2017-12-21T18:23:59.340Z",
+           "summary": "Christmas Shopping!",
+           "location": "University Book Store, 4326 University Way NE, Seattle, WA 98105, USA",
+           "creator": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "organizer": {
+            "email": "kels.langlois@gmail.com",
+            "displayName": "Kelsey Langlois",
+            "self": true
+           },
+           "start": {
+            "dateTime": "2017-12-22T10:00:00-08:00"
+           },
+           "end": {
+            "dateTime": "2017-12-22T11:00:00-08:00"
+           },
+           "iCalUID": "1ijq3eo3qgge7ivc3i8lsdduih@google.com",
+           "sequence": 1,
+           "reminders": {
+            "useDefault": true
+           }
+          }
+         ]
+        }
+    http_version:
+  recorded_at: Thu, 21 Dec 2017 18:48:40 GMT
+recorded_with: VCR 4.0.0
