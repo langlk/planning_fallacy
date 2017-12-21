@@ -23,8 +23,6 @@ To install on your own machine, follow the instructions below:
 
 ## TODO
 
-* TESTSTESTSTESTSTESTS
-  * Test controllers
 * User > Account > Checkin destroy properly
 * All-Day events BREAK EVERYTHING
 * README

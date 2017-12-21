@@ -43,4 +43,16 @@ describe Account do
       expect(checkin1.account.late?).to eq(false)
     end
   end
+
+  describe '#remove_checkins' do
+    it "destroys an account's checkins when account is destroyed" do
+      user = FactoryBot.create(:user, name: 'newtest', email: 'new@new.com', password: 'test123', password_confirmation: 'test123')
+      account = FactoryBot.create(:account, user: user)
+      checkin1 = FactoryBot.create(:checkin)
+      checkin2 = FactoryBot.create(:checkin, account: checkin1.account)
+      checkin3 = FactoryBot.create(:checkin, account: account)
+      checkin2.account.destroy
+      expect(Checkin.all).to eq([checkin3])
+    end
+  end
 end

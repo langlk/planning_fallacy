@@ -4,6 +4,8 @@ class Account < ActiveRecord::Base
 
   validates_presence_of :user, :access_token, :refresh_token, :expires_in
 
+  before_destroy :remove_checkins
+
   def lateness
     if self.checkins.any?
       total = self.checkins.reduce(0) { |sum, checkin| sum + checkin.lateness }
@@ -19,5 +21,9 @@ class Account < ActiveRecord::Base
 
   def late?
     self.lateness > 0
+  end
+
+  def remove_checkins
+    self.checkins.destroy_all
   end
 end
