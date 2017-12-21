@@ -12,5 +12,11 @@ class AuthRefreshAccess
   def call
     @auth_client.refresh!
     return @auth_client
+  rescue Signet::AuthorizationError => exception
+    errors.add(:authorization, 'could not authorize')
+    return nil
+  rescue ArgumentError => exception
+    errors.add(:arguments, 'argument missing')
+    return nil
   end
 end

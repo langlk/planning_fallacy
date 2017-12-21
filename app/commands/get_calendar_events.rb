@@ -2,26 +2,29 @@ class GetCalendarEvents
   prepend SimpleCommand
 
   def initialize(account)
-    @auth_client = AuthRefreshAccess.call(account).result
+    @account = account
     @service = Google::Apis::CalendarV3::CalendarService.new
   end
 
   def call
-    response = @service.list_events(
-      'primary',
-      single_events: true,
-      order_by: 'startTime',
-      time_min: (Time.now - 12.hour).iso8601,
-      time_max: (Time.now + 12.hour).iso8601,
-      options: { authorization: @auth_client }
-    )
-    return response
-  rescue Google::Apis::ClientError => exception
-    if exception.status_code == 404
-      errors.add(:event, "not found")
+    client_command = AuthRefreshAccess.call(@account)
+    if client_command.success?
+      @auth_client = client_command.result
+      response = @service.list_events(
+        'primary',
+        single_events: true,
+        order_by: 'startTime',
+        time_min: (Time.now - 12.hour).iso8601,
+        time_max: (Time.now + 12.hour).iso8601,
+        options: { authorization: @auth_client }
+      )
+      return response
     else
-      errors.add(:client_error, exception.message)
+      errors.add(:refresh_error, 'could not refresh client')
+      return nil
     end
+  rescue Google::Apis::ClientError => exception
+    errors.add(:client_error, exception.message)
     return nil
   rescue Google::Apis::AuthorizationError => exception
     errors.add(:client_error, 'unauthorized')
