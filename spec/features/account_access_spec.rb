@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe 'access with and without an account' do
+describe 'access with and without a linked account' do
   let!(:user) { FactoryBot.create(:user) }
 
   it "does not allow user to visit other site pages before linking account" do

@@ -25,4 +25,22 @@ describe "the sessions management path" do
     click_link 'Sign out'
     expect(page).to have_content 'Sign In'
   end
+
+  it "does not allow user back to login page after logging in" do
+    visit '/signin'
+    fill_in 'email', with: user.email
+    fill_in 'password', with: user.password
+    click_button "Sign in"
+    visit '/signin'
+    expect(page).to have_no_content('Sign In')
+  end
+
+  it "does not allow user back to signup page after logging in" do
+    visit '/signin'
+    fill_in 'email', with: user.email
+    fill_in 'password', with: user.password
+    click_button "Sign in"
+    visit '/signup'
+    expect(page).to have_no_content('Have an account? Sign In')
+  end
 end
