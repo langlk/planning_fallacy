@@ -8,12 +8,15 @@ class AuthFetchAccessToken
   end
 
   def call
-    if @code
+    if @auth_client.code
       @auth_client.fetch_access_token!
       return @auth_client
     else
       errors.add(:authentication, "not confirmed by user")
       nil
     end
+  rescue Signet::AuthorizationError => exception
+    errors.add(:authentication, "invalid code")
+    nil
   end
 end
