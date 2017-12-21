@@ -9,7 +9,7 @@ class SiteController < ApplicationController
   end
 
   def calendar
-    # If integration testing, use set time so vcr handls request.
+    # If integration testing, use static time so vcr handles request properly.
     if Rails.env.test?
       events_command = GetCalendarEvents.call(current_account, "2017-12-21T11:42:50-08:00", "2017-12-22T11:42:50-08:00")
     else

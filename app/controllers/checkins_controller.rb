@@ -1,5 +1,6 @@
 class CheckinsController < ApplicationController
   def new
+    # If integration testing, use static time so vcr handles request properly.
     if Rails.env.test?
       events_command = GetCalendarEvents.call(current_account, "2017-12-21T08:49:43-08:00", "2017-12-21T23:49:43-08:00")
     else
