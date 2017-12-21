@@ -3,6 +3,11 @@ require "rails_helper"
 describe "the sessions management path" do
   let!(:user) { FactoryBot.create(:user) }
 
+  it "does not allow a user to visit pages besides signin and signup before logging in" do
+    visit '/'
+    expect(page).to have_content('Sign In')
+  end
+
   it "allows a user to log in" do
     visit '/signin'
     fill_in 'email', with: user.email
