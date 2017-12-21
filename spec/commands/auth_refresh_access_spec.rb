@@ -24,8 +24,8 @@ describe AuthRefreshAccess, vcr: true do
   context "when account has correct information" do
     let(:account) { FactoryBot.build(:account,
       refresh_token: 'correct_refresh_token',
-      access_token: ENV['GOOGLE_TEST_ACCESS'],
-      expires_in: ENV['GOOGLE_TEST_EXPIRES'],
+      access_token: 'correct_access_token',
+      expires_in: 3600,
       id_token: nil
     )}
 
