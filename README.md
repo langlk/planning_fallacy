@@ -36,8 +36,8 @@ To install on your own machine, follow the instructions below:
   * X Link Gcal
   * X See upcoming events
   * X Checkin: list of events +/- 12 hours from now - select event, mark 'arrived',
-    * **TODO:** mark how many minutes ago
-    * Store event name, time, amount late
+    * mark how many minutes ago
+    * X Store event name, time, amount late
   * X Calculating: find avg lateness over all user events
 
 * Models
