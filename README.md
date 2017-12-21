@@ -25,7 +25,6 @@ To install on your own machine, follow the instructions below:
 
 * Authorization: try to prevent people from re-approving access and possibly LOSING REFRESH KEY FOREVER
 * TESTSTESTSTESTSTESTS
-* Error handling because you know that API client is gonna throw a fit
 * User > Account > Checkin destroy properly
 * All-Day events BREAK EVERYTHING
 
