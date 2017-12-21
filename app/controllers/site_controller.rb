@@ -9,6 +9,12 @@ class SiteController < ApplicationController
   end
 
   def calendar
-    @events = GetCalendarEvents.call(current_account).result.items
+    events_command = GetCalendarEvents.call(current_account)
+    if events_command.success?
+      @events = events_command.result.items
+    else
+      @events = []
+      flash[:alert] = "There was a problem fetching your events."
+    end
   end
 end
