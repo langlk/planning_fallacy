@@ -1,6 +1,6 @@
 class CheckinsController < ApplicationController
   def new
-    events_command = GetCalendarEvents.call(current_account, 3, 12)
+    events_command = GetCalendarEvents.call(current_account, -3, 12)
     if events_command.success?
       @events = events_command.result.items
       @checkin = current_account.checkins.new

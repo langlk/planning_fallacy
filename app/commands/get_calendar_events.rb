@@ -16,7 +16,7 @@ class GetCalendarEvents
         'primary',
         single_events: true,
         order_by: 'startTime',
-        time_min: (Time.now - (@min_time).hour).iso8601,
+        time_min: (Time.now + (@min_time).hour).iso8601,
         time_max: (Time.now + (@max_time).hour).iso8601,
         options: { authorization: @auth_client }
       )
