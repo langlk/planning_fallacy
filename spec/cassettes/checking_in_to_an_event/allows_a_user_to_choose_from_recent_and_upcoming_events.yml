@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=correct_refresh_token&client_id=<client_id>&client_secret=<client_secret>
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 21 Dec 2017 19:49:44 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "new_access_token",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version:
+  recorded_at: Thu, 21 Dec 2017 19:49:44 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/calendars/primary/events?orderBy=startTime&singleEvents=true&timeMax=2017-12-21T23:49:43-08:00&timeMin=2017-12-21T08:49:43-08:00
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.18.0 Mac OS X/10.12.6
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 21 Dec 2017 19:49:44 GMT
+      Authorization:
+      - Bearer new_access_token
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 21 Dec 2017 19:49:44 GMT
+      Date:
+      - Thu, 21 Dec 2017 19:49:44 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "calendar#events",
+         "etag": "\"p33g99m73tedtg0g\"",
+         "summary": "planning.fallacy.test@gmail.com",
+         "updated": "2017-12-21T19:30:44.412Z",
+         "timeZone": "America/Los_Angeles",
+         "accessRole": "owner",
+         "defaultReminders": [
+          {
+           "method": "popup",
+           "minutes": 30
+          }
+         ],
+         "items": [
+          {
+           "kind": "calendar#event",
+           "etag": "\"3027769173670000\"",
+           "id": "40fnb4ai5j35mbkk4nqvup8lsj_20171221T180000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=NDBmbmI0YWk1ajM1bWJrazRucXZ1cDhsc2pfMjAxNzEyMjFUMTgwMDAwWiBwbGFubmluZy5mYWxsYWN5LnRlc3RAbQ",
+           "created": "2017-12-21T19:29:46.000Z",
+           "updated": "2017-12-21T19:29:46.835Z",
+           "summary": "Planning Fallacy Test Event",
+           "creator": {
+            "email": "planning.fallacy.test@gmail.com",
+            "self": true
+           },
+           "organizer": {
+            "email": "planning.fallacy.test@gmail.com",
+            "self": true
+           },
+           "start": {
+            "dateTime": "2017-12-21T10:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "end": {
+            "dateTime": "2017-12-21T11:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "recurringEventId": "40fnb4ai5j35mbkk4nqvup8lsj",
+           "originalStartTime": {
+            "dateTime": "2017-12-21T10:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "iCalUID": "40fnb4ai5j35mbkk4nqvup8lsj@google.com",
+           "sequence": 0,
+           "reminders": {
+            "useDefault": true
+           }
+          },
+          {
+           "kind": "calendar#event",
+           "etag": "\"3027769288546000\"",
+           "id": "2f0h5kq7naanmvkapa9246hb39_20171222T060000Z",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=MmYwaDVrcTduYWFubXZrYXBhOTI0NmhiMzlfMjAxNzEyMjJUMDYwMDAwWiBwbGFubmluZy5mYWxsYWN5LnRlc3RAbQ",
+           "created": "2017-12-21T19:30:44.000Z",
+           "updated": "2017-12-21T19:30:44.273Z",
+           "summary": "Planning Fallacy Test Event 2",
+           "creator": {
+            "email": "planning.fallacy.test@gmail.com",
+            "self": true
+           },
+           "organizer": {
+            "email": "planning.fallacy.test@gmail.com",
+            "self": true
+           },
+           "start": {
+            "dateTime": "2017-12-21T22:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "end": {
+            "dateTime": "2017-12-22T00:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "recurringEventId": "2f0h5kq7naanmvkapa9246hb39",
+           "originalStartTime": {
+            "dateTime": "2017-12-21T22:00:00-08:00",
+            "timeZone": "America/Los_Angeles"
+           },
+           "iCalUID": "2f0h5kq7naanmvkapa9246hb39@google.com",
+           "sequence": 0,
+           "reminders": {
+            "useDefault": true
+           }
+          }
+         ]
+        }
+    http_version:
+  recorded_at: Thu, 21 Dec 2017 19:49:44 GMT
+recorded_with: VCR 4.0.0

@@ -1,6 +1,10 @@
 class CheckinsController < ApplicationController
   def new
-    events_command = GetCalendarEvents.call(current_account, -3, 12)
+    if Rails.env.test?
+      events_command = GetCalendarEvents.call(current_account, "2017-12-21T08:49:43-08:00", "2017-12-21T23:49:43-08:00")
+    else
+      events_command = GetCalendarEvents.call(current_account, -3, 12)
+    end
     if events_command.success?
       @events = events_command.result.items
       @checkin = current_account.checkins.new
