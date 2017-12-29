@@ -7,6 +7,7 @@ class AuthRefreshAccess
     @auth_client.id_token = account.id_token
     @auth_client.expires_in = account.expires_in
     @auth_client.refresh_token = account.refresh_token
+    @auth_client.redirect_uri = ENV['GOOGLE_REDIRECT_URI']
   end
 
   def call

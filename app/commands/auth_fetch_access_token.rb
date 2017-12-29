@@ -4,7 +4,7 @@ class AuthFetchAccessToken
   def initialize(auth_code)
     @auth_client = CreateAuthClient.call.result
     @auth_client.code = auth_code
-    @auth_client.redirect_uri = 'http://localhost:3000/oauth_callback'
+    @auth_client.redirect_uri = ENV['GOOGLE_REDIRECT_URI']
   end
 
   def call

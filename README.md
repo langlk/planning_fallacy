@@ -22,6 +22,7 @@ To install on your own machine, follow the instructions below:
   * Create the credentials, then from the dashboard click the download link
   * Convert the downloaded JSON to a JSON string. (`JSON.dump` will accomplish this)
   * Save this JSON string to an ENV variable `GOOGLE_CLIENT_SECRETS`
+  * Save a second ENV variable `GOOGLE_REDIRECT_URI="http://localhost:3000/oauth_callback"` 
 * Run the following commands in the project root directory:
   ```
   bundle update
