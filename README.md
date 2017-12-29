@@ -20,7 +20,8 @@ To install on your own machine, follow the instructions below:
   * Select "Web application"
   * Add `http://localhost:3000/oauth_callback` to the "Authorized redirect URIs" list
   * Create the credentials, then from the dashboard click the download link
-  * Rename the downloaded JSON to `client_secrets.json`, and move it to the project root directory.
+  * Convert the downloaded JSON to a JSON string. (`JSON.dump` will accomplish this)
+  * Save this JSON string to an ENV variable `GOOGLE_CLIENT_SECRETS`
 * Run the following commands in the project root directory:
   ```
   bundle update
