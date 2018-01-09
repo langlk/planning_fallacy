@@ -31,6 +31,12 @@ This app is deployed to Heroku at [planning-fallacy.herokuapp.com](https://plann
   ```
 * Open ```localhost:3000``` in your web browser
 
+## API needs:
+  * User Registration
+  * Token authentication to login/logout user
+  * Get Upcoming Calendar events
+  * Checkin/Checkout
+
 ## Specifications
 
 * New User Registration Flow:
