@@ -3,12 +3,20 @@ class Api::V1::ApiController < ApplicationController
   skip_before_action :authorize_user
   skip_before_action :authorize_account
 
+  before_action :require_login
+
   def require_login
     authenticate_token || render_unauthorized("Access denied")
   end
 
   def current_user
     @current_user ||= authenticate_token
+  end
+
+  def current_account
+    if current_user
+      current_user.account
+    end
   end
 
   protected

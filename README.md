@@ -75,6 +75,10 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
   * Logs user out, deleting current access token and returning 200 if successful.
+* ```GET /api/v1/events```
+  * **Headers:**
+    * ```Authorization``` - user token in format: "Token [user_token]", _Required_
+  * If authorized, returns a list of user's events.
 ## Known Bugs
 
 * Users can check in to events multiple times.
