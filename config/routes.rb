@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
       get '/user' => 'users#show'
       get '/events' => 'events#index'
-      post '/checkin' => 'checkins#create'
+      post '/checkins' => 'checkins#create'
     end
   end
 end

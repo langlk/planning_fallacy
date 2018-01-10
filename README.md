@@ -31,11 +31,12 @@ This app is deployed to Heroku at [planning-fallacy.herokuapp.com](https://plann
   ```
 * Open ```localhost:3000``` in your web browser
 
-## API needs:
-  * User Registration
-  * Token authentication to login/logout user
-  * Get Upcoming Calendar events
-  * Checkin/Checkout
+## TODO:
+  * Events can only be checked into once.
+  * Get Upcoming Calendar events:
+    * _Needs param for whether to get checkin scoped or calendar scoped._
+    * _REMOVE EXTRA CALENDAR INFO FROM RESPONSE_
+  * Clearer errors/responses.
 
 ## Specifications
 
@@ -83,6 +84,13 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
   * If authorized, returns following info for user: name, email, created_at, and lateness.
+* ```POST /api/v1/checkins```
+  * **Headers:**
+    * ```Authorization``` - user token in format: "Token [user_token]", _Required_
+  * **Params:**
+    * ```event_id``` - GCal id of event to checkin to, ```string```, _Required_
+  * If user is authorized and event id is valid, creates a new checkin for the user for that event.
+  
 ## Known Bugs
 
 * Users can check in to events multiple times.
