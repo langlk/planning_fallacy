@@ -56,6 +56,25 @@ This app is deployed to Heroku at [planning-fallacy.herokuapp.com](https://plann
     * Their basic info: name, email, and date joined.
     * Their statistics: average lateness (based on all checkins) and number of checkins.
 
+### API
+API V1 currently uses the built in `has_secure_token` method to generate a token for a user's access to the API.
+#### Endpoints
+* ```POST /api/v1/signup```
+  * **Params:**
+    * ```name``` - user name, ```string```, _Required_
+    * ```email``` - user email address, ```string```, _Required_
+    * ```password``` - user password, ```string```, _Required_
+    * ```password_confirmation``` - user password confirmation, ```string```, _Required_
+  * Creates user account and returns user's access token if successful. Otherwise returns an error.
+* ```POST /api/v1/signin```
+  * **Params:**
+    * ```email``` - user email address, ```string```, _Required_
+    * ```password``` - user password, ```string```, _Required_
+  * Returns a new token for user account access if email and password are valid. Otherwise returns an error.
+* ```DELETE /api/v1/signout```
+  * **Headers:**
+    * ```Authorization``` - user token in format: "Token [user_token]", _Required_
+  * Logs user out, deleting current access token and returning 200 if successful.
 ## Known Bugs
 
 * Users can check in to events multiple times.

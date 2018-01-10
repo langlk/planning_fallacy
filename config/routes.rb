@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/index' => 'test#index'
-      post   "/login"       => "sessions#create"
-      delete "/logout"      => "sessions#destroy"
+      post '/signup' => 'users#create'
+      post   "/signin" => "sessions#create"
+      delete "/signout" => "sessions#destroy"
     end
   end
 end
