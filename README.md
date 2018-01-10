@@ -58,7 +58,7 @@ This app is deployed to Heroku at [planning-fallacy.herokuapp.com](https://plann
     * Their statistics: average lateness (based on all checkins) and number of checkins.
 
 ### API
-API V1 currently uses the built in `has_secure_token` method to generate a token for a user's access to the API. This is not exactly a viable production security strategy.
+API V1 currently uses the built in `has_secure_token` method to generate a token for a user's access to the API, based on [this tutorial](https://rubyplus.com/articles/4311-Securing-an-API-in-Rails-5-using-Token-Based-Authentication). This is not exactly a viable production security strategy.
 #### Endpoints
 * ```POST /api/v1/signup```
   * **Params:**
