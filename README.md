@@ -79,6 +79,10 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
   * If authorized, returns a list of user's events.
+* ```GET /api/v1/user```
+  * **Headers:**
+    * ```Authorization``` - user token in format: "Token [user_token]", _Required_
+  * If authorized, returns following info for user: name, email, created_at, and lateness.
 ## Known Bugs
 
 * Users can check in to events multiple times.
