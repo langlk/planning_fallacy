@@ -10,7 +10,7 @@ _This is an app to help people compensate for the Planning Fallacy. It uses a us
 
 ## Installation and Setup
 
-This app is deployed to Heroku at [planning-fallacy.herokuapp.com](https://planning-fallacy.herokuapp.com) To install on your own machine, follow the instructions below:
+This app is deployed to Heroku at [planningfallacy.herokuapp.com](https://planningfallacy.herokuapp.com) To install on your own machine, follow the instructions below:
 
 * Clone this repository.
 * You will need to set up a Google APIs project:
