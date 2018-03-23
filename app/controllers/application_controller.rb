@@ -6,11 +6,22 @@ class ApplicationController < ActionController::Base
   before_action :authorize_account
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    print params
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    elsif params[:token]
+      @current_user ||= authenticate_token(params[:token])
+      session[:user_id] = @current_user.id
+      @current_user
+    end
   end
 
   def current_account
-    @current_account ||= Account.find(session[:account_id]) if session[:account_id]
+    if session[:account_id]
+      @current_account ||= Account.find(session[:account_id])
+    else
+      current_user.account if current_user
+    end
   end
 
   def authorize_user
@@ -27,5 +38,16 @@ class ApplicationController < ActionController::Base
 
   def authorize_no_account
     redirect_to root_path unless !current_account
+  end
+
+  private
+
+  def authenticate_token(token)
+    if user = User.find_by_token(token)
+      ActiveSupport::SecurityUtils.secure_compare(
+                      ::Digest::SHA256.hexdigest(token),
+                      ::Digest::SHA256.hexdigest(user.token))
+      user
+    end
   end
 end
