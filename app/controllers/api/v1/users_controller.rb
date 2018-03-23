@@ -14,7 +14,7 @@ class Api::V1::UsersController < Api::V1::ApiController
     render json: {
       name: current_user.name,
       email: current_user.email,
-      create_at: current_user.created_at,
+      created_at: current_user.created_at,
       has_account: current_account != nil,
       lateness: current_account ? current_account.lateness : nil
     }
