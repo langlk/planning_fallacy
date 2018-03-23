@@ -15,7 +15,8 @@ class Api::V1::UsersController < Api::V1::ApiController
       name: current_user.name,
       email: current_user.email,
       create_at: current_user.created_at,
-      lateness: current_account.lateness
+      has_account: current_account != nil,
+      lateness: current_account ? current_account.lateness : nil
     }
   end
 

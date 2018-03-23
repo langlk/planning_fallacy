@@ -83,7 +83,7 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
 * ```GET /api/v1/user```
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
-  * If authorized, returns following info for user: name, email, created_at, and lateness.
+  * If authorized, returns following info for user: name, email, created_at, has_account, and lateness.
 * ```POST /api/v1/checkins```
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
