@@ -5,7 +5,14 @@ class Api::V1::SessionsController < Api::V1::ApiController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       allow_token_to_be_used_only_once_for(user)
-      send_auth_token_for_valid_login_of(user)
+      render json: {
+        name: user.name,
+        email: user.email,
+        token: user.token,
+        created_at: user.created_at,
+        has_account: user.account != nil,
+        lateness: user.account ? user.account.lateness : nil
+      }
     else
       render_unauthorized("Error with your login or password")
     end
@@ -17,10 +24,6 @@ class Api::V1::SessionsController < Api::V1::ApiController
   end
 
   private
-
-  def send_auth_token_for_valid_login_of(user)
-    render json: { token: user.token }
-  end
 
   def allow_token_to_be_used_only_once_for(user)
     user.regenerate_token

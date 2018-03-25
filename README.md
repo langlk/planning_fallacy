@@ -66,12 +66,12 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
     * ```email``` - user email address, ```string```, _Required_
     * ```password``` - user password, ```string```, _Required_
     * ```password_confirmation``` - user password confirmation, ```string```, _Required_
-  * Creates user account and returns user's access token if successful. Otherwise returns an error.
+  * Creates user account and returns following user info if successful: name, email, token, created_at, has_account, and lateness. Otherwise returns an error.
 * ```POST /api/v1/signin```
   * **Params:**
     * ```email``` - user email address, ```string```, _Required_
     * ```password``` - user password, ```string```, _Required_
-  * Returns a new token for user account access if email and password are valid. Otherwise returns an error.
+  * Returns name, email, token, created_at, has_account, and lateness for user account if email and password are valid. Otherwise returns an error.
 * ```DELETE /api/v1/signout```
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
@@ -83,7 +83,7 @@ API V1 currently uses the built in `has_secure_token` method to generate a token
 * ```GET /api/v1/user```
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
-  * If authorized, returns following info for user: name, email, created_at, has_account, and lateness.
+  * If authorized, returns following info for user: name, email, token, created_at, has_account, and lateness.
 * ```POST /api/v1/checkins```
   * **Headers:**
     * ```Authorization``` - user token in format: "Token [user_token]", _Required_
